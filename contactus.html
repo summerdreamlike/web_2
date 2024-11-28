@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>联系我们</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="css/style2.css">
+    <style type="text/css">
+		body{
+			background: url("R-C.jpg");
+			opacity: 1;
+		}
+		.login_main_l{
+		    width: 460px;
+		    margin: 0 auto;
+		}
+		.login_main_l h4 {
+		    color: #43465a;
+		    font-size: 25px;
+		    line-height: 25px;
+		    padding: 20px 0 0px 0;
+		}
+		.login_main_l .li_o {
+		    line-height: 26px;
+		    border-bottom: 1px solid #d9dade;
+		    width: 100%;
+		    margin-bottom: 20px;
+		    overflow:hidden;
+		}
+		.login_main_l .msg {
+		    float: left;
+		    margin-left: 10px;
+		    color: #f14700;
+		    font-size: 12px;
+		    width: 220px;
+		    overflow: hidden;
+		}
+    </style>
+  </head>
+  <body>
+	<header>
+	    <h1>清明上河图</h1>
+	        <nav>
+	            <ul>
+	                <li><a href="index.html">历史背景</a></li>
+	                <li><a href="#analysis">作品分析</a></li>
+	                <li><a href="#gallery">画作欣赏</a></li>
+	                <li><a href="#contact">联系我们</a></li>
+	            </ul>
+	        </nav>
+	</header>
+    <div class="mainDiv">
+        <div class="title">我要留言</div>
+        <div class="line">基本信息（必填）
+	        <div class="item">
+		        <div>姓名</div>
+		        <div class="li_o">
+					<input id="user_name" type="text" name="username" class="txt1" placeholder="请输入姓名">
+					<div id="user_name_err" style="color: #f14700;"></div>
+				</div>
+		    </div>
+			
+			<div class="item">
+			    <div>内容</div>
+			    <div><textarea type="text" class="txt3" placeholder="请输入您要留言的内容"></textarea></div>
+			</div>
+	        <div class="item">
+			    <div>手机号</div>
+			    <div><input type="text" name="userphonrnumber" class="txt2" placeholder="请输入手机号"></div>
+			</div>
+	        <div class="item">
+			    <div>验证码</div>
+			    <div class="li_o">
+					<input id="pass_word" type="text" name="usercode" class="txt1" placeholder="请输入验证码">
+					<div id="pass_word_err" style="color: #f14700;"></div>
+				</div>
+	        </div>
+			<div class="item">
+			    <div>性别：</div>
+			    <div>
+			        <input type="radio" name="sex" value="男">男
+			        <input type="radio" name="sex" value="女">女
+			    </div>
+			</div>
+			<div class="item">
+				<div></div>
+				<div>
+					<input type="reset" value="提交" onclick="login()">
+					<div id="login_main"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+    </div>
+	<br>
+	<br>
+	<div class="mainDiv">
+		<div class="title">赞助我们</div>
+		<div class="line_picture">↓某成员的二维码↓
+			<div>
+				<img width="300" height="400" src="assets/erweima.jpg">
+			</div>
+		</div>
+	</div>
+  </body>
+  <script>
+        function login(){
+            var user_name=document.getElementById("user_name").value;
+			var pass_word=document.getElementById("pass_word").value;
+            if(user_name!="admin"){
+                document.getElementById("user_name_err").innerHTML="用户名错误";
+            }
+            else{
+                document.getElementById("user_name_err").innerHTML="";
+            }
+			if(pass_word!="123456"){
+			    document.getElementById("pass_word_err").innerHTML="验证码错误";
+			}
+			else{
+			    document.getElementById("pass_word_err").innerHTML="";
+			}
+            if(pass_word=="123456" && user_name=="admin"){
+                document.getElementById("login_main").innerHTML="发送成功";
+			}
+        }
+    </script>
+</html>
