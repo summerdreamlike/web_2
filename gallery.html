@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>画作欣赏</title>
+		<link rel="stylesheet" href="css/style4.css">
+	</head>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		/* body {
+			width: 100vw;
+			height: 100vh;
+			background-color: #f0ffff;
+			 background-image: url("../assets/R-C.jpg");
+			background-size: cover;
+			height: 150vh;
+			backdrop-filter: blur(100px);
+			-webkit-backdrop-filter: blur(100px);
+			opacity: 0.85;
+		} */
+		.view{
+			position: relative;
+			width: 800px;
+			height: 600px;
+			counter-reset: num 0;
+			transform-style: preserve-3d;
+			perspective: 500px;
+			animation: scroll 1s infinite;
+		}
+		.view:hover{
+		  animation-play-state: paused;
+		}
+		@keyframes scroll{
+			to {
+			    transform: translateZ(0.1px);
+			}
+		}
+		.item{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 8px;
+			display: grid;
+			place-content: center;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+			transform: translate3d(0,0,-100px);
+			background-color: #8B4513;
+		}
+		.item:hover img{
+			filter: blur(2px);
+			transform: scale(1.1);
+		}
+		.item.current{
+			transform: translate3d(0,0,0);
+		}
+		.item.current+.item{
+			transform: translate3d(30%, 0, -100px);
+		}
+		.item:has(+.item.current){
+		  transform: translate3d(-30%, 0, -100px);
+		}
+		.item.current + .item + .item,
+		.item:first-child:has(~ .item.current:nth-last-child(2)), 
+		.item:nth-child(2):has(~ .item.current:last-child) {
+		  transform: translate3d(50%, 0, -150px);
+		}
+		.item:has(+.item + .item.current),
+		.item.current:first-child ~ .item:nth-last-child(2),
+		.item.current:nth-child(2) ~ .item:last-child{
+		  transform: translate3d(-50%, 0, -150px);
+		}
+		.item.current:first-child ~ .item:last-child {
+		  transform: translate3d(-30%, 0, -100px);
+		  opacity: 1;
+		}
+		.item:first-child:has(~ .item.current:last-child) {
+		  transform: translate3d(30%, 0, -100px);
+		  opacity: 1;
+		}
+		div img{
+			transition: all .4s;
+		}
+		div .item{
+			transition: all .8s;
+		}
+	</style>
+	<body>
+		<header>
+		    <h1>清明上河图</h1>
+		    <nav>
+		        <ul>
+		            <li><a href="index1.html" target="_blank">历史背景</a></li>
+		            <li><a href="index2.html"target="_blank">作品分析</a></li>
+		            <li><a href="gallery.html">画作欣赏</a></li>
+		            <li><a href="contactus.html" target="_blank">联系我们</a></li>
+		        </ul>
+		    </nav>
+		</header>
+		<div class="container">
+			<br /><br /><br /><br /><br />
+			<div class="view" id="view" style="text-align: center; margin: auto auto; justify-content: center;">
+				<div class="item current">
+					<img src="assets/G1.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G2.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G3.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G4.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G1.jpg" style="width:800px;height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G2.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G3.jpg" style="width:800px; height:400px"></a>
+				</div>
+				<div class="item">
+					<img src="assets/G4.jpg" style="width:800px; height:400px"></a>
+				</div>
+			</div>
+			<br /><br /><br />
+		</div>
+		<nav>
+			<ul>
+				<div><li><a href="index.html">返回首页</a></li></div>
+			</ul>
+		</nav>
+	</body>
+	<script type="text/javascript">
+		view.addEventListener("animationiteration", () => {
+		    const current = view.querySelector(".current") || view.firstElementChild;
+		    current.classList.remove("current");
+		    if (current.nextElementSibling) {
+		        current.nextElementSibling.classList.add("current");
+		    }
+			else {
+		        view.firstElementChild.classList.add("current");
+		    }
+		});
+	</script>
+</html>
